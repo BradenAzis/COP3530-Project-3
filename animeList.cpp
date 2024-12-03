@@ -20,8 +20,10 @@ void animeList::copy(animeList animeList){
     }
 }
 void animeList::setSimilarity(anime selected) {
-    for(anime a : list){
-        a.calculateSimilarity(selected);
+    for(anime &a : list) {
+        if (a.getName() != selected.getName()) {
+            a.calculateSimilarity(selected);
+        }
     }
 }
 void animeList::merge(vector<anime> &vec, int left, int mid, int right) {

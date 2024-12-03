@@ -3,6 +3,7 @@
 //
 
 #include "anime.h"
+#include <iostream>
 
 anime::anime(std::string name, set<std::string> genres, std::string type, int length, int startYear, int viewers, float rating, bool ongoing) {
     this->name = name;
