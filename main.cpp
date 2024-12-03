@@ -1,12 +1,7 @@
 #include <iostream>
 #include "anime.h"
 #include "animeList.h"
-#include "anime.h"
 #include "string"
-#include "vector"
-#include "set"
-#include "algorithm"
-#include "cmath"
 #include "chrono"
 
 using namespace std;
