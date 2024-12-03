@@ -11,8 +11,8 @@ anime::anime(std::string name, set<std::string> genres, std::string type, int le
     this->length = length;
     this->startYear = startYear;
     this->viewers = viewers;
-    maxViewers = 0;
-    minViewers = 0;
+    maxViewers = 200000;
+    minViewers = 40000;
     this->rating = rating;
     this->ongoing = ongoing;
     similarity = 0;
