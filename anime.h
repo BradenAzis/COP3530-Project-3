@@ -40,6 +40,7 @@ public:
     float getRating();
     bool getOngoing();
     float getSimilarity();
+    void setSimilarity(float sim);
     int getMinViewers();
     int getMaxViewers();
     //setter and incrementer for viewers

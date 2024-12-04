@@ -33,7 +33,7 @@ public:
     void quickSort(vector<anime> &vec, int low, int high);
     bool compareLists(animeList list2){
         for (int i = 0; i < list.size(); ++i) {
-            if(list[i].getName() != list2.list[i].getName()){
+            if(list[i].getSimilarity() != list2.list[i].getSimilarity()){
                 return false;
             }
         }

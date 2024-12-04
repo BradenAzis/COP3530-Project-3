@@ -74,7 +74,7 @@ void loadAnimeData(const std::string& filePath, animeList& animeCollection, std:
 //            std::cout << "Parsed Name: " << name << ", Members: " << members << std::endl; //FIXME: Remove debug output
 
         } catch (const std::exception& e) {
-            std::cerr << "Error processing line: " << line << " - " << e.what() << std::endl;
+            //std::cerr << "Error processing line: " << line << " - " << e.what() << std::endl;
             continue; // Skip malformed lines
         }
     }

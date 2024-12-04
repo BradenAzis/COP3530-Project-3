@@ -53,6 +53,9 @@ int anime::getMaxViewers() {
 int anime::getMinViewers() {
     return minViewers;
 }
+void anime::setSimilarity(float sim) {
+    similarity = sim;
+}
 void anime::setViewers(int viewers) {
     this->viewers = viewers;
 }

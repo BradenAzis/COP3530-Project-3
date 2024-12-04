@@ -24,8 +24,12 @@ void animeList::setSimilarity(anime selected) {
         if (a.getName() != selected.getName()) {
             a.calculateSimilarity(selected);
         }
+        else{
+            a.setSimilarity(0);
+        }
     }
 }
+//merge and mergeSort algorithms modeled after code found at geeksforgeeks.org
 void animeList::merge(vector<anime> &vec, int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -45,7 +49,7 @@ void animeList::merge(vector<anime> &vec, int left, int mid, int right) {
     // Merge the temp vectors back
     // into arr[left..right]
     while (i < n1 && j < n2) {
-        if (L[i].getSimilarity() <= R[j].getSimilarity()) {
+        if (L[i].getSimilarity() >= R[j].getSimilarity()) {
             vec[k] = L[i];
             i++;
         }
@@ -81,6 +85,8 @@ void animeList::mergeSort(vector<anime> &vec, int left, int right) {
     mergeSort(vec, mid + 1, right);
     merge(vec, left, mid, right);
 }
+
+//partion and quickSort algorithms modeled after code found at geeksforgeeks.org
 int animeList::partition(vector<anime> &vec, int low, int high) {
     // Selecting last element as the pivot
     float pivot = vec[high].getSimilarity();
@@ -93,7 +99,7 @@ int animeList::partition(vector<anime> &vec, int low, int high) {
 
         // If current element is smaller than or
         // equal to pivot
-        if (vec[j].getSimilarity() <= pivot) {
+        if (vec[j].getSimilarity() >= pivot) {
             i++;
             swap(vec[i], vec[j]);
         }
