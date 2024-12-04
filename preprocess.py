@@ -1,7 +1,7 @@
 import pandas as pd
 
 input_file = "cleaned-anime-dataset.csv"
-output_file = "formatted-anime-dataset.csv"
+output_file = "cmake-build-debug/formatted-anime-dataset.csv"
 
 df = pd.read_csv(input_file)
 

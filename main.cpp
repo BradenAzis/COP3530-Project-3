@@ -1,14 +1,11 @@
 #include <iostream>
 #include "anime.h"
-#include "anime.cpp"
 #include "animeList.h"
-#include "animeList.cpp"
 #include "string"
 #include "chrono"
 #include "unordered_map"
 #include "unordered_set"
 #include "animeDataLoader.h"
-#include "animeDataLoader.cpp"
 using namespace std;
 using namespace std::chrono;
 int main() {
@@ -32,10 +29,7 @@ int main() {
 
     //TODO: Implement the following
     // Adjust weights
-    // Include romanji warning
     // Verify quick sort and merge sort are at the most efficient implementations
-    // More readable time units
-    // Prompt user for specific input or account for capitalization
     cout<<"Starting up...";
     animeList myAnimeList;
     unordered_set<string> animeSet;
@@ -63,7 +57,7 @@ int main() {
 
     bool quit = false;
     while (!quit){
-        cout<<"Please enter the name of an anime:";
+        cout<<"Please enter the name of an anime (note that title may be in romanji):";
         string inputAnime;
         getline(cin, inputAnime);
         while(animeSet.find(inputAnime) == animeSet.end()){ // O(1) lookup
@@ -95,8 +89,11 @@ int main() {
         cout << endl;
         string sameResult = myAnimeList_Merge.compareLists(myAnimeList_Quick) ? "Yes" : "No";
         cout << "Merge and Quick sort results same: " << sameResult << endl;
-        cout << "Quick Sort time: " << duration_quick.count() << " ns" << endl;
-        cout << "Merge Sort time: " << duration_merge.count() <<  " ns" << endl;
+        // Convert nanoseconds to seconds
+        auto quick_sort_time_seconds = std::chrono::duration_cast<std::chrono::duration<double>>(duration_quick);
+        auto merge_sort_time_seconds = std::chrono::duration_cast<std::chrono::duration<double>>(duration_merge);
+        std::cout << "Quick Sort time seconds: " << quick_sort_time_seconds.count() << " seconds" << std::endl; //FIXME: Quick Sort much longer? (19s compared to 0.44s)
+        std::cout << "Merge Sort time seconds: " << merge_sort_time_seconds.count() << " seconds" << std::endl;
         cout << endl;
         cout<<"Recommendations:"<<endl;
         for(int i = 0; i<numResults; i++){
