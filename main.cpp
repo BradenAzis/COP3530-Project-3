@@ -1,33 +1,53 @@
 #include <iostream>
 #include "anime.h"
-#include "anime.cpp"
-#include "animeList.cpp"
 #include "animeList.h"
 #include "string"
 #include "chrono"
 #include "unordered_map"
+#include "unordered_set"
+#include "animeDataLoader.h"
 using namespace std;
 using namespace std::chrono;
 int main() {
     //setup for testing
-    anime cowboyBebop = anime("Cowboy Bebop", {"Action", "Award Winning", "Sci-Fi"}, "TV", 26, 1998, 100000, 8.75, false);
-    anime trigun = anime("Trigun", {"Action", "Adventure", "Sci-Fi"}, "TV", 26, 1998, 80000, 8.22, false);
-    anime schoolRumble = anime("School Rumble", {"Comedy", "Romance"}, "TV", 26, 2004, 70000, 7.89, false);
-    anime EVA = anime("Neon Genesis Evangelion", {"Action", "Avant Garde","Award Winning", "Drama", "Sci-Fi", "Suspense"}, "TV", 26, 1995, 200000, 8.35, false);
-    anime finalApproach = anime("Final Approach", {"Comedy", "Romance" "Drama"}, "TV", 13, 2004, 40000, 6.62, false);
-    animeList myAnimeList;
-    myAnimeList.addToList(cowboyBebop);
-    myAnimeList.addToList(trigun);
-    myAnimeList.addToList(schoolRumble);
-    myAnimeList.addToList(EVA);
-    myAnimeList.addToList(finalApproach);
-    unordered_map<string, int> animeMap;
-    animeMap["Cowboy Bebop"] = 100000;
-    animeMap["Trigun"] = 80000;
-    animeMap["School Rumble"] = 70000;
-    animeMap["Neon Genesis Evangelion"] = 200000;
-    animeMap["Final Approach"] = 40000;
+//    anime cowboyBebop = anime("Cowboy Bebop", {"Action", "Award Winning", "Sci-Fi"}, "TV", 26, 1998, 100000, 8.75, false);
+//    anime trigun = anime("Trigun", {"Action", "Adventure", "Sci-Fi"}, "TV", 26, 1998, 80000, 8.22, false);
+//    anime schoolRumble = anime("School Rumble", {"Comedy", "Romance"}, "TV", 26, 2004, 70000, 7.89, false);
+//    anime EVA = anime("Neon Genesis Evangelion", {"Action", "Avant Garde","Award Winning", "Drama", "Sci-Fi", "Suspense"}, "TV", 26, 1995, 200000, 8.35, false);
+//    anime finalApproach = anime("Final Approach", {"Comedy", "Romance" "Drama"}, "TV", 13, 2004, 40000, 6.62, false);
+//    animeList myAnimeList;
+//    myAnimeList.addToList(cowboyBebop);
+//    myAnimeList.addToList(trigun);
+//    myAnimeList.addToList(schoolRumble);
+//    myAnimeList.addToList(EVA);
+//    myAnimeList.addToList(finalApproach);
+//    animeMap["Cowboy Bebop"] = 100000;
+//    animeMap["Trigun"] = 80000;
+//    animeMap["School Rumble"] = 70000;
+//    animeMap["Neon Genesis Evangelion"] = 200000;
+//    animeMap["Final Approach"] = 40000;
 
+    //TODO: Implement the following
+    // Sort high to low
+    // Output 10 at a time
+    // Adjust weights
+    // Include loading output and romanji warning
+    // Verify quick sort and merge sort are at the most efficient implementations
+
+    animeList myAnimeList;
+    unordered_set<string> animeSet;
+    // Path to the dataset
+    std::string datasetPath = "formatted-anime-dataset.csv";
+
+    // Load the dataset
+    loadAnimeData(datasetPath, myAnimeList, animeSet);
+
+//    // Print all anime names in the list
+//    for (anime a : myAnimeList.getList()) {
+//        std::cout << "Anime: " << a.getName() << ", Viewers: " << a.getViewers() << std::endl;
+//    }
+//
+//    cout << myAnimeList.getList().size() << endl; // Currently has 13585/24906 anime
     cout <<
             "                                                               \n"
             " __ __                _____     _              __    _     _   \n"
@@ -40,7 +60,7 @@ int main() {
           "Please enter the name of an anime:";
     string inputAnime;
     getline(cin, inputAnime);
-    while(animeMap.find(inputAnime) == animeMap.end()){
+    while(animeSet.find(inputAnime) == animeSet.end()){ // O(1) lookup
         cout << "Sorry, we could not find that anime in our database. \n"
                 "Please enter another name:";
         getline(cin, inputAnime);
@@ -72,5 +92,6 @@ int main() {
     }
     cout << "Quick Sort time: " << duration_quick.count() << endl;
     cout << "Merge Sort time: " << duration_merge.count() << endl;
+    return 0;
 }
 

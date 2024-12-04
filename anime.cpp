@@ -12,8 +12,9 @@ anime::anime(std::string name, set<std::string> genres, std::string type, int le
     this->length = length;
     this->startYear = startYear;
     this->viewers = viewers;
-    maxViewers = 200000;
-    minViewers = 40000;
+    // max and min values pulled from dataset
+    maxViewers = 3744541;
+    minViewers = 0;
     this->rating = rating;
     this->ongoing = ongoing;
     similarity = 0;
@@ -106,10 +107,10 @@ void anime::calculateSimilarity(anime selected) {
     float ratingScore = rating / 10.0;
     //total similarity score with weights
     float weightedSim =
-            0.3*genreSim +
+            0.8*genreSim +
             0.1*typeSim +
-            0.2*lengthSim +
-            0.1*yearSim +
+            0.1*lengthSim +
+            0.05*yearSim +
             0.05*ongoingSim +
             0.1*viewerSim +
             0.1*ratingSim;

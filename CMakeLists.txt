@@ -7,4 +7,7 @@ add_executable(COP3530_Project_3 main.cpp
         anime.cpp
         anime.h
         animeList.cpp
-        animeList.h)
+        animeList.h
+        animeDataLoader.cpp
+        animeDataLoader.h
+)
