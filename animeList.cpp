@@ -88,15 +88,13 @@ void animeList::mergeSort(vector<anime> &vec, int left, int right) {
 
 //partion and quickSort algorithms modeled after code found at geeksforgeeks.org
 int animeList::partition(vector<anime> &vec, int low, int high) {
-    // Selecting last element as the pivot
-    float pivot = vec[high].getSimilarity();
+    // Random pivot selection
+    int pivotIndex = low + rand() % (high - low + 1) // Random index between low and high
+    swap(vec[pivotIndex], vec[high]); // Move random pivot to the end
 
-    // Index of elemment just before the last element
-    // It is used for swapping
     int i = (low - 1);
 
     for (int j = low; j <= high - 1; j++) {
-
         // If current element is smaller than or
         // equal to pivot
         if (vec[j].getSimilarity() >= pivot) {
