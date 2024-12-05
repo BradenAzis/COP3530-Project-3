@@ -92,8 +92,8 @@ int main() {
         // Convert nanoseconds to seconds
         auto quick_sort_time_seconds = std::chrono::duration_cast<std::chrono::duration<double>>(duration_quick);
         auto merge_sort_time_seconds = std::chrono::duration_cast<std::chrono::duration<double>>(duration_merge);
-        std::cout << "Quick Sort time seconds: " << quick_sort_time_seconds.count() << " seconds" << std::endl; //FIXME: Quick Sort much longer? (19s compared to 0.44s)
-        std::cout << "Merge Sort time seconds: " << merge_sort_time_seconds.count() << " seconds" << std::endl;
+        std::cout << "Quick Sort time: " << quick_sort_time_seconds.count() << " seconds" << std::endl; //FIXME: Quick Sort much longer? (19s compared to 0.44s)
+        std::cout << "Merge Sort time: " << merge_sort_time_seconds.count() << " seconds" << std::endl;
         cout << endl;
         cout<<"Recommendations:"<<endl;
         for(int i = 0; i<numResults; i++){
